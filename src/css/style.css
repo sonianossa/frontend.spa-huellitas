@@ -1,0 +1,957 @@
+@font-face {
+  font-family: Mulish;
+  src: url(../assets/fonts/Mulish-Regular.ttf);
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Mulish;
+}
+/*Se establecen variables personalizadas para tener un orden mas especifico de los colores principales y demas utilizados en todo el codigo css ademas de ayudar a la 
+actualización de los mismo de una manera mas global sin tener que actualizar uno a uno manteniendo una coherencia visual*/
+:root {
+  --primary-color: black;
+  --secundary-color: white;
+  --theme-bc: rgb(221, 221, 229);
+  --menu: rgb(255, 255, 255);
+  --background-color-header-servicios: rgba(255, 255, 255, 0.889);
+  --contenedores-logout-reserva: rgba(44, 44, 44, 0.599);
+  --linea-link-nav: rgba(0, 0, 0, 0.577);
+  --link-nav-hv: rgb(152, 151, 151);
+  --background-color-text-sobre-nosotros: rgb(12, 12, 12);
+  --background-color-footer: rgba(248, 249, 250, 0.681);
+  --background-color-box-slider: rgba(0, 0, 0, 0.812);
+  --bc-text-box-timeline: rgb(41, 41, 41);
+}
+/*****************************************************************************************Header********************************************************************/
+.top__header {
+  width: 93%;
+  height: 7rem;
+  margin: 0 auto;
+  position: fixed;
+  background-color: var(--background-color-header-servicios);
+  left: 0;
+  top: 0;
+  z-index: 20;
+  margin: 2rem;
+  border-radius: 2rem;
+}
+.top__nav {
+  display: flex;
+  justify-content: center;
+}
+.logo {
+  display: flex;
+  align-items: center;
+  padding-right: 2rem;
+}
+.menu {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.items__nav {
+  padding: 0 10px;
+  line-height: 7rem;
+  position: relative;
+}
+.nav-link {
+  position: relative;
+  color: var(--primary-color);
+}
+/*se puede realizar el hover en el link que no este seleccionado*/
+.nav-link:not(.active):hover {
+  color: var(--link-nav-hv);
+}
+/*La clase active viene incorporada con el NavLink del header lo que hace que la linea insertada se posicione en la seccion correspondiente
+lo que hace que se tenga una experiencia de usuario mejor ya que se sabe donde esta ubicado*/
+
+.active::after {
+  content: "";
+  background-color: var(--linea-link-nav);
+  border-radius: 2rem;
+  position: absolute;
+  left: 0;
+  top: 60%;
+  width: 100%;
+  height: 4px;
+  transition: 0.3s;
+}
+.boton__hamburguerIcon {
+  display: none;
+  cursor: pointer;
+  border: none;
+  margin: 0;
+  padding: 0;
+  background-color: transparent;
+  padding: 1rem;
+  border-radius: 3rem;
+}
+.boton__hamburguerIcon span {
+  display: block;
+  background-color: var(--primary-color);
+  height: 0.18rem;
+  width: 1.7rem;
+  margin: 0.625rem auto;
+  border: 2px;
+}
+/*****************************************************************************************HeroImage********************************************************************/
+.contenido__heroImage {
+  display: flex;
+  height: 100vh;
+  width: 100%;
+  background-image: linear-gradient(
+      rgba(18, 24, 31, 0.5),
+      rgba(18, 24, 31, 0.5)
+    ),
+    url("../assets/image/heroimage.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.contenido__heroImage__textoHero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: var(--secundary-color);
+  padding-top: 8rem;
+}
+.titulo__hero {
+  width: fit-content;
+  padding: 1rem;
+  font-size: 3rem;
+  text-shadow: #000000 2px 2px;
+  font-weight: bold;
+}
+.texto__hero {
+  padding: 1rem;
+  font-size: 2rem;
+  text-align: center;
+  text-shadow: #000000 2px 2px;
+  font-weight: lighter;
+  font-style: italic;
+}
+main {
+  background-color: var(--theme-bc);
+  padding-bottom: 3rem;
+}
+/***************************************************************************Texto Sobre Nosotros************************************************************************/
+.contenedor__sobreNosotros {
+  height: fit-content;
+  position: relative;
+  width: 100%;
+}
+.texto__sobreNosotros {
+  color: var(--secundary-color);
+  background-color: var(--background-color-text-sobre-nosotros);
+  width: 58%;
+  padding-bottom: 2rem;
+}
+.titulo__sobreNosotros {
+  padding: 1rem;
+}
+.contenedor__sobreNosotros .texto__sobreNosotros {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: center;
+  margin-left: 2.5rem;
+  margin-top: 2.563rem;
+  padding-left: 2.5rem;
+  padding-right: 2.5rem;
+}
+.contenedor__sobreNosotros .imagen__sobreNosotros {
+  background-position: 40%;
+  height: 100%;
+  position: absolute;
+  right: 10%;
+  top: 13%;
+}
+@media screen and (max-width: 2000px) and (min-width: 1429px) {
+  .contenedor__sobreNosotros .imagen__sobreNosotros {
+    right: 16%;
+    top: 10%;
+  }
+}
+.imagen__cachorros {
+  width: 28rem;
+  height: 20rem;
+}
+/*Es necesario tener esta query en cuenta para pantallas mas grande ya que se generaba un scroll de barra horrizontal ya que la imagen se salia del ancho solicitado*/
+@media screen and (max-width: 1131px) and (min-width: 992px) {
+  .imagen__cachorros {
+    width: 25rem;
+  }
+  .contenedor__sobreNosotros .imagen__sobreNosotros {
+    right: 5%;
+    top: 20%;
+  }
+}
+.parrafo__sobreNosotros {
+  width: fit-content;
+  padding-right: 5rem;
+  font-size: large;
+}
+/************************************************************Cards Consejos*********************************************************************************************/
+.titulo__consejos {
+  text-align: center;
+  padding: 2rem;
+  font-weight: bold;
+}
+.texto__consejos {
+  font-weight: lighter;
+  font-style: italic;
+  text-align: center;
+  padding: 1rem;
+}
+/**************************************************************************Footer***************************************************************************************/
+.footer {
+  display: flex;
+  justify-content: space-evenly;
+  background-color: var(--background-color-footer);
+  flex-wrap: wrap;
+  padding: 5rem;
+  gap: 2rem;
+}
+.footer__texto__lista {
+  list-style: none;
+  display: flex;
+  font-size: 1.5rem;
+  gap: 2rem;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1.5rem;
+  color: var(--primary-color);
+}
+.footer__copy {
+  justify-content: center;
+  display: flex;
+  text-align: center;
+  flex-direction: column;
+  background-color: var(--primary-color);
+  color: var(--secundary-color);
+  padding: 1rem;
+}
+/**************************************************************************************Formulario login/registro/logout************************************************************************/
+.titulo__iniciarSesion {
+  text-align: center;
+  font-size: x-large;
+  color: var(--secundary-color);
+}
+.formularios {
+  background-image: linear-gradient(
+      rgba(18, 24, 31, 0.512),
+      rgba(18, 24, 31, 0.423)
+    ),
+    url("../assets/image/perrologin.jpg");
+  height: 100%;
+  width: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  padding-top: 8rem;
+}
+
+.titulo__logout {
+  color: var(--secundary-color);
+  font-size: 1.8rem;
+  text-align: center;
+  line-height: 3rem;
+}
+.formularios__logout {
+  background-image: linear-gradient(
+      rgba(18, 24, 31, 0.534),
+      rgba(18, 24, 31, 0.16)
+    ),
+    url("../assets/image/perrologin.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+  display: flex;
+  padding: 18rem 0;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+.contenedor__logout {
+  line-height: 5rem;
+  align-items: center;
+  background-color: var(--contenedores-logout-reserva);
+  box-shadow: 2px 2px 18px rgb(212, 231, 238);
+  padding: 3rem;
+  border-radius: 1rem;
+}
+/*******************************************************************************Sección Servicios***************************************************************************************/
+.lista__servicios {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  list-style: none;
+  flex-wrap: wrap;
+  gap: 5rem;
+  padding: 7rem 9rem 5.5rem;
+  background-image: url("../assets/image/himagesrvicios.jpg");
+  height: 100%;
+  width: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  margin-bottom: 0;
+}
+.Detalles__servicios {
+  background-color: var(--theme-bc);
+  padding-bottom: 4rem;
+}
+.titulo__cards {
+  text-align: center;
+  font-size: x-large;
+  padding: 12rem 0 0 0;
+  font-weight: bold;
+}
+.titulo__servicioReserva {
+  color: var(--primary-color);
+  background-color: var(--background-color-header-servicios);
+  padding: 1rem;
+  border-radius: 1rem;
+  font-weight: 500;
+  font-style: italic;
+}
+.cards__detalles {
+  width: 70%;
+}
+/****************************************************************************Seccion de aceptar o rechazar reserva*********************************************************/
+.formularios__reserva {
+  background-image: linear-gradient(
+      rgba(18, 24, 31, 0.534),
+      rgba(18, 24, 31, 0.16)
+    ),
+    url("../assets/image/perroreserva.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+  display: flex;
+  padding: 19rem 0;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+.contenedor__reserva {
+  line-height: 5rem;
+  align-items: center;
+  background-color: var(--contenedores-logout-reserva);
+  box-shadow: 2px 2px 18px rgb(212, 231, 238);
+  padding: 3rem;
+  border-radius: 1rem;
+}
+.titulo__reserva {
+  color: var(--secundary-color);
+  font-size: 1.5rem;
+  line-height: 2.3rem;
+  text-align: center;
+}
+
+/***************************************************************************Reservas-eliminar-editar*********************************************************************/
+.pack__reservado {
+  background-color: var(--theme-bc);
+}
+.lista__reservas {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  list-style: none;
+  flex-wrap: wrap;
+  gap: 5rem;
+  padding: 4rem 9rem 5.5rem;
+}
+.edicionReserva {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+.contenedor__ediReserva {
+  background-color: var(--primary-color);
+  padding: 1rem 3rem;
+  border-radius: 1rem;
+  margin-bottom: 2rem;
+}
+.edicion__reserva {
+  background-color: var(--theme-bc);
+  padding-bottom: 5rem;
+}
+/*******************************************************************************Slide sección instalaciones*****************************************************************/
+.slider__box {
+  width: 100%;
+  height: auto;
+  overflow: hidden; /*el overflow hidden se realiza para esconder las demas imagenes en el contenedor y que no se genere un scroll horizontal*/
+}
+.lista__slider {
+  display: flex;
+  padding: 0;
+  margin-bottom: 0;
+  width: 400%;
+  animation: slide 20s infinite alternate ease-in-out; /* cada imagen tendra una duración en pantalla de 4s teniendo 20s en total siendo infinito comenzando y terminando
+   la animación lentamente y teniendo un poco de velocidad en el medio de la animación*/
+}
+.slider__box li {
+  width: 100%;
+  list-style: none;
+  position: relative;
+  background-color: var(--background-color-box-slider);
+}
+.texto__img {
+  position: absolute;
+  text-align: center;
+  padding: 0 15.625rem;
+  top: 25%;
+  color: var(--secundary-color);
+  min-width: 30%;
+}
+.texto__img h2 {
+  font-size: 2.813rem;
+  margin-bottom: 2.188rem;
+}
+.texto__img p {
+  font-size: 1.6rem;
+  font-weight: lighter;
+}
+.slider__box img {
+  width: 100%;
+  opacity: 0.6;
+}
+/*Se divide la transición en cuatro secciones cada sección con menos de porcentaje de los 400% que se tiene de widht lo que genera que para cada imagen se realice un desplazamiento 
+de izquierda a derecha y despues de derecha a izquierda*/
+@keyframes slide {
+  0% {
+    margin-left: 0;
+  }
+  20% {
+    margin-left: 0;
+  }
+
+  25% {
+    margin-left: -100%;
+  }
+  45% {
+    margin-left: -100%;
+  }
+
+  50% {
+    margin-left: -200%;
+  }
+  70% {
+    margin-left: -200%;
+  }
+
+  75% {
+    margin-left: -300%;
+  }
+  100% {
+    margin-left: -300%;
+  }
+}
+/*************************************************************************Instalaciones texto*****************************************************************************/
+.instalaciones {
+  background-color: var(--theme-bc);
+  padding-bottom: 5rem;
+}
+.titulo__instalaciones {
+  text-align: center;
+  padding: 3rem 1rem 1.5rem;
+  font-weight: bold;
+  font-size: 1.7rem;
+}
+.frase__instalaciones {
+  text-align: center;
+  padding: 2rem;
+  font-style: italic;
+}
+.parrafo__instalaciones {
+  font-size: larger;
+  padding: 0 5rem;
+  text-align: center;
+}
+
+/***************************************************************************linea temporal estatica instalaciones*********************************************************************/
+.timeline {
+  position: relative;
+  max-width: 75rem;
+  margin: 6.25rem auto 0rem;
+}
+/*Esto es un contenido sin nada dentro de el que se coloca el Pseudo-elemento after porque se va a 
+  crear un columna sin contenido despues de la clase linea temporal con posicion absolute tomando como referencia 
+  la primera posición relativa de la linea temporal*/
+.timeline::after {
+  content: "";
+  position: absolute;
+  width: 0.375rem;
+  height: 100%;
+  background-color: var(--primary-color);
+  top: 0; /*hasta este punto la columna creada aparece al lado izquierdo de la página por que para desplazarla 
+  a la mitad se colocara que se desplace un 50% del lado izquierdo*/
+  left: 50%;
+  margin-left: -0.188;
+}
+.container__time {
+  padding: 0.625rem 3.125rem;
+  position: relative;
+  width: 50%;
+}
+.container__time img {
+  position: absolute;
+  width: 2.5rem;
+  border-radius: 50%;
+  right: -1.25rem;
+  top: 1.875rem;
+  z-index: 10;
+}
+.text__box {
+  padding: 1.25rem 1.875rem;
+  background-color: var(--bc-text-box-timeline);
+  position: relative;
+  border-radius: 0.375rem;
+  font-size: 0.938rem;
+}
+.text__box h2 {
+  font-weight: 500;
+  color: var(--secundary-color);
+}
+.text__box p {
+  font-size: large;
+  color: var(--secundary-color);
+}
+.text__box img {
+  border-radius: 50%;
+}
+.container__izquierdo {
+  left: 0;
+}
+.container__derecho {
+  left: 50%;
+}
+.container__derecho img {
+  left: -1.25rem;
+}
+.arrow__left {
+  height: 0;
+  width: 0;
+  position: absolute;
+  top: 1.75rem;
+  z-index: 1;
+  border-top: 0.938rem solid transparent;
+  border-bottom: 0.938rem solid transparent;
+  border-left: 0.938rem solid var(--bc-text-box-timeline);
+  right: -0.938rem;
+}
+.arrow__right {
+  height: 0;
+  width: 0;
+  position: absolute;
+  top: 1.75rem;
+  z-index: 1;
+  border-top: 0.938rem solid transparent;
+  border-bottom: 0.938rem solid transparent; /*se colocan en transparent para que formen solo con el border left la flecha*/
+  border-right: 0.938rem solid var(--bc-text-box-timeline);
+  left: -0.938rem;
+}
+/*****************************************Responsive en dispositivo mobile posición vertical***************************************************************************/
+@media screen and (max-width: 575px) and (min-width: 320px) {
+  .menu {
+    flex-direction: column;
+    height: 100%;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    align-items: center;
+    background-color: var(--menu);
+    color: var(--primary-color);
+    overflow-y: auto; /*Se realiza cuando el contenido es muy angosto en el eje y para que se pueda realizar un scroll de manera vertical 
+  y el usuario no este limite a no ver el menu de la pagina completo solo porque su dispositivo no tiene las medidas requeridas*/
+    opacity: 0;
+    pointer-events: none; /*con esto se realiza que los elementos ya no esten opacos ni se pueda hacer click*/
+    z-index: 10;
+  }
+  .top__header {
+    width: 87%;
+  }
+  .top__nav {
+    justify-content: space-between;
+  }
+  .items__nav {
+    padding: 0 15px;
+    flex-direction: column;
+  }
+  .active:hover {
+    color: var(--linea-link-nav);
+  }
+  .nav-link::after {
+    content: none;
+  }
+  .btn__cerrarsesion {
+    line-height: 2.1;
+    padding: 0.8rem 2rem;
+  }
+  .boton__hamburguerIcon {
+    display: block;
+    position: absolute;
+    top: 0.9375rem;
+    right: 1rem;
+    transition: 0.2s 0.1s;
+    z-index: 80;
+  }
+  .boton__hamburguerIcon:hover {
+    transform: rotate(360deg);
+  }
+
+  @keyframes muestraMenu {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  .menu.activado {
+    display: flex;
+    justify-content: center;
+    animation: muestraMenu 350ms ease-in-out both;
+    pointer-events: all;
+  }
+  span.barra1.activado {
+    transform: rotate(-45deg) translate(-10px, 8px);
+  }
+  span.barra2.activado {
+    opacity: 0;
+  }
+  span.barra3.activado {
+    transform: rotate(45deg) translate(-10px, -8px);
+  }
+  .texto__sobreNosotros {
+    width: 100%;
+  }
+  .contenedor__sobreNosotros .texto__sobreNosotros {
+    margin-left: 0;
+    margin-top: 0;
+  }
+  .contenedor__sobreNosotros .imagen__sobreNosotros {
+    height: 100%;
+    position: static;
+    right: 5%;
+    top: 20%;
+  }
+  .imagen__cachorros {
+    width: 100%;
+    height: fit-content;
+  }
+  .parrafo__sobreNosotros {
+    padding-right: 1rem;
+  }
+  .footer {
+    padding: 1rem;
+  }
+  .footer__texto__lista {
+    justify-content: flex-start;
+  }
+  .footer__contactenos {
+    padding: 0.5rem;
+  }
+  .titulo__logout {
+    font-size: 1rem;
+  }
+  .titulo__reserva {
+    font-size: 1rem;
+  }
+  .lista__reservas {
+    gap: 2rem;
+    padding: 2rem 2rem 5.5rem;
+  }
+  .timeline {
+    margin: 3.125rem auto 0rem;
+  }
+  .timeline::after {
+    left: 1.938rem;
+  }
+  .container__time {
+    width: 100%;
+    padding-left: 5rem;
+    padding-right: 1.563rem;
+  }
+  .text__box p {
+    font-size: 1rem;
+  }
+  .text__box h2 {
+    font-size: 1.3rem;
+  }
+  .container__derecho {
+    left: 0;
+  }
+  .container__izquierdo img,
+  .container__derecho img {
+    left: 0.625rem;
+  }
+  .arrow__left,
+  .arrow__right {
+    border-right: 0.938rem solid gainsboro;
+    border-left: 0;
+    left: -0.938rem;
+  }
+  .slider__box {
+    width: 100%;
+    padding-top: 7.5rem;
+  }
+  .texto__img {
+    top: 8%;
+    padding: 0 1rem;
+  }
+  .texto__img h2 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+  }
+  .texto__img p {
+    font-size: 1rem;
+  }
+  .cards__detalles {
+    width: 90%;
+  }
+}
+/*****************************************Responsive en dispositivo mobile posición horizontal*****************************************************************************/
+@media screen and (max-width: 767px) and (min-width: 576px) {
+  .active:hover {
+    color: var(--linea-link-nav);
+  }
+  .nav-link::after {
+    content: none;
+  }
+  .texto__sobreNosotros {
+    width: 100%;
+  }
+  .contenedor__sobreNosotros .texto__sobreNosotros {
+    margin-left: 0;
+    margin-top: 0;
+  }
+  .contenedor__sobreNosotros .imagen__sobreNosotros {
+    height: 100%;
+    position: static;
+    right: 5%;
+    top: 20%;
+  }
+  .imagen__cachorros {
+    width: 100%;
+    height: fit-content;
+  }
+
+  .parrafo__sobreNosotros {
+    padding-right: 1rem;
+  }
+  .footer__contactenos {
+    padding: 1rem;
+  }
+  .footer__horario {
+    padding: 2.5rem;
+  }
+  .footer__rrss {
+    padding: 2.5rem;
+  }
+  .titulo__logout {
+    font-size: 1.5rem;
+  }
+  .timeline {
+    margin: 3.125rem auto 0rem;
+  }
+  .timeline::after {
+    left: 1.938rem;
+  }
+  .container__time {
+    width: 100%;
+    padding-left: 5rem;
+    padding-right: 1.563rem;
+  }
+  .text__box p {
+    font-size: 1rem;
+  }
+  .container__derecho {
+    left: 0;
+  }
+  .container__izquierdo img,
+  .container__derecho img {
+    left: 0.625rem;
+  }
+  .arrow__left,
+  .arrow__right {
+    border-right: 0.938rem solid gainsboro;
+    border-left: 0;
+    left: -0.938rem;
+  }
+  .slider__box {
+    width: 100%;
+  }
+  .texto__img {
+    top: 30%;
+    padding: 0 1rem;
+  }
+  .texto__img h2 {
+    font-size: 1.8rem;
+    margin-bottom: 0.938rem;
+  }
+  .texto__img p {
+    font-size: 1.2rem;
+  }
+  .menu {
+    flex-direction: column;
+    height: 100%;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    align-items: center;
+    background-color: var(--menu);
+    color: var(--primary-color);
+    overflow-y: auto; /*Se realiza cuando el contenido es muy angosto en el eje y para que se pueda realizar un scroll de manera vertical 
+    y el usuario no este limite a no ver el menu de la pagina completo solo porque su dispositivo no tiene las medidas requeridas*/
+    opacity: 0;
+    pointer-events: none; /*con esto se realiza que los elementos ya no esten opacos ni se pueda hacer click*/
+    z-index: 10;
+  }
+  .boton__hamburguerIcon {
+    display: block;
+    position: absolute;
+    top: 0.9375rem;
+    right: 1rem;
+    transition: 0.2s 0.1s;
+    z-index: 80;
+  }
+  .boton__hamburguerIcon:hover {
+    transform: rotate(360deg);
+  }
+
+  @keyframes muestraMenu {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  .menu.activado {
+    display: flex;
+    justify-content: center;
+    animation: muestraMenu 350ms ease-in-out both;
+    pointer-events: all;
+  }
+  span.barra1.activado {
+    transform: rotate(-45deg) translate(-10px, 8px);
+  }
+  span.barra2.activado {
+    opacity: 0;
+  }
+  span.barra3.activado {
+    transform: rotate(45deg) translate(-10px, -8px);
+  }
+}
+
+/*****************************************Responsive en dispositivo tablet***********************************************************************************************/
+@media screen and (max-width: 995px) and (min-width: 768px) {
+  .active:hover {
+    color: var(--linea-link-nav);
+  }
+  .nav-link::after {
+    content: none;
+  }
+  .texto__sobreNosotros {
+    width: 100%;
+  }
+  .contenedor__sobreNosotros .texto__sobreNosotros {
+    margin-left: 0;
+    margin-top: 0;
+  }
+  .contenedor__sobreNosotros .imagen__sobreNosotros {
+    height: 100%;
+    position: static;
+    right: 5%;
+    top: 20%;
+  }
+  .imagen__cachorros {
+    width: 100%;
+    height: fit-content;
+  }
+
+  .parrafo__sobreNosotros {
+    padding-right: 1rem;
+  }
+  .slider__box {
+    width: 100%;
+  }
+  .texto__img {
+    top: 30%;
+    padding: 0 1rem;
+  }
+  .texto__img h2 {
+    font-size: 2rem;
+    margin-bottom: 0.938rem;
+  }
+  .texto__img p {
+    font-size: 1.5rem;
+  }
+  .menu {
+    flex-direction: column;
+    height: 100%;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    align-items: center;
+    background-color: var(--menu);
+    color: var(--primary-color);
+    overflow-y: auto; /*Se realiza cuando el contenido es muy angosto en el eje y para que se pueda realizar un scroll de manera vertical 
+    y el usuario no este limite a no ver el menu de la pagina completo solo porque su dispositivo no tiene las medidas requeridas*/
+    opacity: 0;
+    pointer-events: none; /*con esto se realiza que los elementos ya no esten opacos ni se pueda hacer click*/
+    z-index: 10;
+  }
+  .boton__hamburguerIcon {
+    display: block;
+    position: absolute;
+    top: 0.9375rem;
+    right: 1rem;
+    transition: 0.2s 0.1s;
+    z-index: 80;
+  }
+  .boton__hamburguerIcon:hover {
+    transform: rotate(360deg);
+  }
+
+  @keyframes muestraMenu {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  .menu.activado {
+    display: flex;
+    justify-content: center;
+    animation: muestraMenu 350ms ease-in-out both;
+    pointer-events: all;
+  }
+  span.barra1.activado {
+    transform: rotate(-45deg) translate(-10px, 8px);
+  }
+  span.barra2.activado {
+    opacity: 0;
+  }
+  span.barra3.activado {
+    transform: rotate(45deg) translate(-10px, -8px);
+  }
+}
